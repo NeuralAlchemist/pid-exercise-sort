@@ -1,5 +1,7 @@
 package pid.exercise.sort;
 
+import org.junit.jupiter.api.Assertions;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 
 import java.util.Arrays;
@@ -70,8 +72,33 @@ public class SelectionSortTest {
         Arrays.sort(expected); // We expect Arrays.sort to be correct as it is a highly battle-tested implementation.
         // Act
         SelectionSort.sort(actual);
+
         // Assert
         assertArrayEquals(expected, actual);
+    }
+
+    @Test
+    @DisplayName("swap the indices that are present in an array")
+    void swapTheIndicesThatArePresentInAnArray() {
+        int[] underSwap = {23, 34, 6, 32, 1};
+        int[] expected = {23, 6, 34, 32, 1};
+        SelectionSort.swapElements(underSwap, 1,2);
+        assertArrayEquals(expected, underSwap);
+    }
+
+    @Test
+    @DisplayName("swap the indices one of which is not present in array")
+    void swapTheIndicesOneOfWhichIsNotPresentInArray() {
+        int[] underSwap = {23, 34, 6, 32, 1};
+        Assertions.assertEquals(false, SelectionSort.swapElements(underSwap, 1, underSwap.length));
+
+    }
+
+    @Test
+    @DisplayName("swap the indicies both are not present in array")
+    void swapTheIndiciesBothAreNotPresentInArray() {
+        int[] underSwap = {23, 34, 6, 32, 1};
+        Assertions.assertEquals(false, SelectionSort.swapElements(underSwap, -1, underSwap.length));
     }
 
 }
