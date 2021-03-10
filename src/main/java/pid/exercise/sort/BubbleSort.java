@@ -4,8 +4,7 @@ public class BubbleSort {
 
 
     public static void sort(int[] array) {
-        boolean swapped = false;
-        int count = 0;
+        boolean swapped;
         do{
             swapped = false;
             for(int j = 0; j <= array.length-2; j++){
